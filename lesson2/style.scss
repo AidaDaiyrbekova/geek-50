@@ -1,0 +1,97 @@
+:root {
+  --color--white: #fff;
+  --color--black: #000;
+  --color--blue: #00f;
+  --primary--color: yellow;
+  --secodary--color: green;
+  --border: 1px solid var(--color--black);
+  --input-height: 42px;
+  --container-width: 500px;
+  --container-padding-width: 20px;
+  --border-radius: 5px ;
+}
+
+.h1 {
+  color: var(--primary--color);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #a0d5d5;
+}
+
+$color: blue;
+
+button {
+  background-color: $color;
+}
+.color {
+  color: $color;
+}
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  @include flex-center;
+  background-color: $color;
+  max-width: calc(var(--container-width) + var(--container-padding-width)*2);
+  border: var(--border);
+  border-radius: var(--border-radius);
+}
+
+@mixin custome-button ($bg-color, $text-color, $font-size, $bg-color-hover: aqua) {
+  background-color: $bg-color;
+  color: $text-color;
+  font-size: $font-size;
+  padding: 10px;
+  &:hover {
+    background-color: $bg-color-hover;
+  }
+}
+.btn {
+  @include custome-button(green, yellow, 30px)
+}
+@mixin  responsive($size) {
+  @media (max-width: $size) {
+    @content;
+  }
+}
+@include responsive(768px) {
+  body {
+    background-color: red;
+  }
+}
+.banner {
+  text-transform: uppercase;
+  color: #000;
+  font-family: "Heebo", sans-serif;
+  font-weight: 700;
+}
+.banner-info {
+  display: flex;
+  font-size: clamp(10px, 1.56vw, 30px);
+  align-items: end;
+  line-height: 127%;
+}
+.banner-info::before {
+  font-size: clamp(60px, 10.1vw, 194px);
+  content: '';
+  width: 194px;
+  aspect-ratio: 1;
+  margin-right: 30px;
+  background: url("./img/img.svg") center/contain no-repeat;
+}
+
+
+.title {
+  font-size: clamp(60px, 18.75vw, 360px);
+
+  line-height: 1;
+}
